@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Drink Inventory App</string>
+    <string name="app_name">Personal Drink Inventory</string>
+    <string name="login_button">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>
