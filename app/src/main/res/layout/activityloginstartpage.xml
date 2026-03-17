@@ -21,6 +21,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:shadowColor="@color/white"
             android:layout_gravity="center"
             android:background="@color/orange_200"
             android:padding="36dp"
