@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/teal_200"
+    android:background="@color/cornflower_blue"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:textColor="@color/even_darker_grey"
+        android:textSize="25dp"
+        android:id="@+id/signin_prompt"
+        android:fontFamily="monospace"
+        android:text="Sign in to your account"/>
+    <TextView
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="164dp"
-        android:textColor="@color/purple_700"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/even_darker_grey"
         android:padding="24dp"
+        android:fontFamily="monospace"
         android:text="@string/username"/>
 
         <EditText
@@ -26,12 +38,13 @@
 
     <TextView
         android:id="@+id/password"
-        android:textColor="@color/purple_700"
+        android:textColor="@color/even_darker_grey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:padding="10dp"
+        android:fontFamily="monospace"
         android:text="@string/password"/>
 
         <EditText
@@ -51,19 +64,30 @@
         android:layout_marginTop="20dp"
         android:padding="24dp"
         android:background="@color/orange_200"
-        android:textColor="@color/purple_700"
-        android:text="@string/login_button"
+        android:textColor="@color/even_darker_grey"
+        android:fontFamily="monospace"
+        android:text="@string/login_button" />
 
-        />
+        <Button
+            android:id="@+id/sign_up_button"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:textColor="@color/even_darker_grey"
+            android:background="@color/orange_200"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="monospace"
+            android:text="Sign up"/>
 
-    <Button
-        android:id="@+id/forgot_password_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@color/orange_200"
-        android:textColor="@color/purple_700"
-        android:text="@string/forgot_password"/>
+
+<!--    <Button-->
+<!--        android:id="@+id/forgot_password_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:background="@color/orange_200"-->
+<!--        android:textColor="@color/purple_700"-->
+<!--        android:text="@string/forgot_password"/>-->
 
 </LinearLayout>
