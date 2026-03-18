@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "44236858681",
+    "project_id": "drink-inventory-app",
+    "storage_bucket": "drink-inventory-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44236858681:android:73e299dafaf42283a7b4e8",
+        "android_client_info": {
+          "package_name": "com.example.drinkinventoryapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2kcTPJ_9RRDUYnfovlikjqXHeBroo7iQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
