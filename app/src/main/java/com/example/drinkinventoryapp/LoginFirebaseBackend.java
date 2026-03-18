@@ -1,10 +1,9 @@
-//import com.example.drinkinventoryapp.databinding.ActivityMainBinding;
+package com.example.drinkinventoryapp;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-
 public class LoginFirebaseBackend {
-    //backend for the firebase retrieval stuff
     private static FirebaseAuth auth;
     private static FirebaseFirestore db;
 

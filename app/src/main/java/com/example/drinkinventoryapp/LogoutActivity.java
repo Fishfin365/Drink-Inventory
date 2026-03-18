@@ -1,4 +1,4 @@
-//package com.example.drinkinventoryapp;
+package com.example.drinkinventoryapp;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +13,6 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.example.drinkinventoryapp.R; // <-- Replace with your actual package name if different
-
 
 public class LogoutActivity extends AppCompatActivity {
 

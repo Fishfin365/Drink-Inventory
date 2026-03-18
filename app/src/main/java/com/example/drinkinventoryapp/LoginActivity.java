@@ -1,4 +1,4 @@
-//package com.example.drinkinventoryapp;
+package com.example.drinkinventoryapp;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,8 +19,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
 import java.util.List;
-import com.example.drinkinventoryapp.R; // <-- Replace with your actual package name if different
-
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -40,14 +38,12 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Ensure this layout exists in your res/layout folder
-        //setContentView(R.layout.activityloginstartpage);
         setContentView(R.layout.activityloginpage);
 
         mAuth = FirebaseAuth.getInstance();
 
+        // Updated ID to match activityloginstartpage.xml
         Button loginButton = findViewById(R.id.login_button);
-        Button signUpButton = findViewById(R.id.sign_up_button);
 
         if (loginButton != null) {
             loginButton.setOnClickListener(v -> startSignIn());

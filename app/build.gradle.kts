@@ -58,7 +58,7 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(platform("com.google.firebase:firebase-bom:34.10.0"))
     implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-auth")
 
     // Add FirebaseUI Auth for easy sign-in UI
     implementation("com.firebaseui:firebase-ui-auth:8.0.2") // Adjust version as needed
