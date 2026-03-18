@@ -58,6 +58,13 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(platform("com.google.firebase:firebase-bom:34.10.0"))
     implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth-ktx")
+
+    // Add FirebaseUI Auth for easy sign-in UI
+    implementation("com.firebaseui:firebase-ui-auth:8.0.2") // Adjust version as needed
+
+    // Google Sign In SDK (required for Google sign-in with FirebaseUI)
+    implementation("com.google.android.gms:play-services-auth:20.5.0") // Adjust version as needed
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

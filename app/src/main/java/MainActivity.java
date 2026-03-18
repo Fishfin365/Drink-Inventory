@@ -11,6 +11,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import android.os.Bundle;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         auth = LoginFirebaseBackend.getAuth();
+        //auth = FirebaseAuth.getInstance();
 
         authListener = firebaseAuth -> {
             FirebaseUser user = firebaseAuth.getCurrentUser();
