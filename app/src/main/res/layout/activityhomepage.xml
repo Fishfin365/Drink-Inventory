@@ -80,5 +80,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/liquor_image"/>
+    
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/orange_200"
+        android:textColor="@color/even_darker_grey"
+        android:fontFamily="monospace"
+        android:layout_gravity="center"
+        android:text="Log out"
+        android:layout_marginTop="300dp"/>
 
 </LinearLayout>
