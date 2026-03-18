@@ -1,3 +1,5 @@
+//package com.example.drinkinventoryapp;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.drinkinventoryapp.R;
+import com.example.drinkinventoryapp.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -27,14 +32,20 @@ public class MainActivity extends AppCompatActivity {
         auth = LoginFirebaseBackend.getAuth();
         //auth = FirebaseAuth.getInstance();
 
+        Button inventoryButton = findViewById(R.id.inventory);
+        Button recipe = findViewById(R.id.recipe_browser);
+        Button rateItem = findViewById(R.id.rate_item);
+        Button leaderboard = findViewById(R.id.leaderboard);
+        Button logoutButton = findViewById(R.id.logoutButton);
+
         authListener = firebaseAuth -> {
             FirebaseUser user = firebaseAuth.getCurrentUser();
             if (user != null) {
                 // User is logged in — go to inventory
-                startActivity(new Intent(this.InventoryActivity));
+                startActivity(new Intent(MainActivity.this, InventoryActivity.class));
             } else {
                 // Not logged in — go to login screen
-                startActivity(new Intent(this.LoginActivity));
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
             finish();
         };

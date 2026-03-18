@@ -1,6 +1,9 @@
+//package com.example.drinkinventoryapp;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
@@ -16,13 +19,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
 import java.util.List;
+import com.example.drinkinventoryapp.R; // <-- Replace with your actual package name if different
+
 
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "SignInActivity";
     private FirebaseAuth mAuth;
 
-    // Use the ActivityResultLauncher for handling the FirebaseUI sign-in result
     private final ActivityResultLauncher<Intent> signInLauncher = registerForActivityResult(
             new FirebaseAuthUIActivityResultContract(),
             new ActivityResultCallback<FirebaseAuthUIAuthenticationResult>() {
@@ -36,42 +40,48 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_sign_in); // Or whatever your layout is
+        // Ensure this layout exists in your res/layout folder
+        //setContentView(R.layout.activityloginstartpage);
+        setContentView(R.layout.activityloginpage);
 
-        mAuth = FirebaseAuth.getInstance(); // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+        Button loginButton = findViewById(R.id.login_button);
+        Button signUpButton = findViewById(R.id.sign_up_button);
+
+        if (loginButton != null) {
+            loginButton.setOnClickListener(v -> startSignIn());
+        }
+    }
+
+    private void startSignIn() {
+        List<AuthUI.IdpConfig> providers = Arrays.asList(
+                new AuthUI.IdpConfig.EmailBuilder().build(),
+                new AuthUI.IdpConfig.GoogleBuilder().build()
+        );
+
+        Intent signInIntent = AuthUI.getInstance()
+                .createSignInIntentBuilder()
+                .setAvailableProviders(providers)
+                .build();
+
+        signInLauncher.launch(signInIntent);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-
-        // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser == null) {
-            // Not signed in, launch the Sign In activity using FirebaseUI
-            List<AuthUI.IdpConfig> providers = Arrays.asList(
-                    new AuthUI.IdpConfig.EmailBuilder().build(), // Email/Password sign-in
-                    new AuthUI.IdpConfig.GoogleBuilder().build() // Google Sign-in
-            );
-
-            Intent signInIntent = AuthUI.getInstance()
-                    .createSignInIntentBuilder()
-                    //.setLogo(R.mipmap.ic_launcher) // Optional: add your app logo
-                    .setAvailableProviders(providers)
-                    .build();
-
-            signInLauncher.launch(signInIntent); // Launch the sign-in intent
-        } else {
-            goToMainActivity(); // User is already signed in, go to your main content
+        if (currentUser != null) {
+            goToMainActivity();
         }
     }
 
     private void onSignInResult(FirebaseAuthUIAuthenticationResult result) {
         if (result.getResultCode() == RESULT_OK) {
             Log.d(TAG, "Sign in successful!");
-            goToMainActivity(); // Sign in was successful
+            goToMainActivity();
         } else {
-            // Sign in failed
             IdpResponse response = result.getIdpResponse();
             if (response == null) {
                 Log.w(TAG, "Sign in canceled");
