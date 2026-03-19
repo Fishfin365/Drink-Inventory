@@ -35,5 +35,11 @@ public class LoginStartActivity extends AppCompatActivity {
             // Updated ID to match activityloginstartpage.xml
             Button login_Button = findViewById(R.id.login);
 
+            if (login_Button != null) {
+                login_Button.setOnClickListener(v -> {
+                    Intent intent = new Intent(this, LoginActivity.class);
+                    startActivity(intent);
+                });
+            }
     }
 }
