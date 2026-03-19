@@ -16,4 +16,10 @@
     <color name="dark_grey">#696969</color>
     <color name="really_dark_grey">#343434</color>
     <color name="even_darker_grey">#353839</color>
+    <color name="dark_brown">#382711</color>
+    <color name="whiskey_brown">#63523D</color>
+    <color name="light_grey2">#BDBAB7</color>
+    <color name="mossy_green1">#515C4C</color>
+    <color name="moss_green">#136328</color>
+    <color name="mid_green">#55694B</color>
 </resources>
