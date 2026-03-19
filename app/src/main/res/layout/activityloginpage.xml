@@ -16,8 +16,8 @@
         android:id="@+id/signin_prompt"
         android:fontFamily="monospace"
         android:text="Log in to your Account"/>
+
     <TextView
-        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -25,23 +25,21 @@
         android:textColor="@color/white"
         android:padding="5dp"
         android:fontFamily="monospace"
-        android:text="@string/username"/>
+        android:text="@string/email_input"/>
 
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/white"
-            android:textColor="@color/even_darker_grey"
-            android:fontFamily="monospace"
-            android:padding="5dp"
-            android:allowUndo="true"
-            android:maxLength="25"
-            android:autoSizeMaxTextSize="36dp"
-            android:inputType="text"/>
+    <EditText
+        android:id="@+id/email_input"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:textColor="@color/even_darker_grey"
+        android:fontFamily="monospace"
+        android:padding="5dp"
+        android:maxLength="50"
+        android:inputType="textEmailAddress"/>
 
     <TextView
-        android:id="@+id/password"
         android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,18 +49,17 @@
         android:fontFamily="monospace"
         android:text="@string/password"/>
 
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/white"
-            android:textColor="@color/even_darker_grey"
-            android:fontFamily="monospace"
-            android:padding="5dp"
-            android:allowUndo="true"
-            android:maxLength="25"
-            android:autoSizeMaxTextSize="36dp"
-            android:inputType="text"/>
+    <EditText
+        android:id="@+id/password_input"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:textColor="@color/even_darker_grey"
+        android:fontFamily="monospace"
+        android:padding="5dp"
+        android:maxLength="25"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/login_button"
@@ -76,15 +73,15 @@
         android:fontFamily="monospace"
         android:text="@string/login_button" />
 
-        <Button
-            android:id="@+id/sign_up_button"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:textColor="@color/even_darker_grey"
-            android:background="@color/orange_200"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="monospace"
-            android:text="Sign up"/>
+    <Button
+        android:id="@+id/sign_up_button"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:textColor="@color/even_darker_grey"
+        android:background="@color/orange_200"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="monospace"
+        android:text="Sign up"/>
 
 </LinearLayout>
