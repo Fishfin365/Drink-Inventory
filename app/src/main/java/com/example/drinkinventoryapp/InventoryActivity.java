@@ -25,11 +25,11 @@ public class InventoryActivity extends AppCompatActivity {
         ImageButton backButton = findViewById(R.id.btn_back);
         backButton.setOnClickListener(v -> finish());
 
-        // Initialize RecyclerView
+        // Initialized a RecyclerView
         recyclerView = findViewById(R.id.recycler_ingredients);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Load Mock Data
+        // Created mock data for testing
         ingredientList = new ArrayList<>();
         ingredientList.add(new Ingredient("Vodka", 2, "750ml"));
         ingredientList.add(new Ingredient("Gin", 1, "1L"));
@@ -37,7 +37,7 @@ public class InventoryActivity extends AppCompatActivity {
         ingredientList.add(new Ingredient("Lime Juice", 3, "250ml"));
         ingredientList.add(new Ingredient("Simple Syrup", 1, "500ml"));
 
-        // Setup Adapter
+        // Creating Adapter
         adapter = new IngredientAdapter(ingredientList);
         recyclerView.setAdapter(adapter);
     }
