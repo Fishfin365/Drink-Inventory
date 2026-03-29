@@ -66,6 +66,11 @@ dependencies {
     // Google Sign In SDK (required for Google sign-in with FirebaseUI)
     implementation("com.google.android.gms:play-services-auth:20.5.0") // Adjust version as needed
 
+    //ui shapes n stuff
+    implementation("androidx.graphics:graphics-shapes:1.0.1")
+    implementation(libs.material)
+    implementation("com.google.android.material:material:1.11.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

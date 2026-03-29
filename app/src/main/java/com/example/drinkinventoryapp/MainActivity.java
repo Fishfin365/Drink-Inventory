@@ -40,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+        if (rateItemButton != null) {
+            rateItemButton.setOnClickListener(v -> {
+                Intent intent1 = new Intent(MainActivity.this, RatingActivity.class);
+                startActivity(intent1);
+            });
+        }
+
         // Auth listener to handle session state
         authListener = firebaseAuth -> {
             FirebaseUser user = firebaseAuth.getCurrentUser();

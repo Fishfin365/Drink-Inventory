@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="2dp"
+    app:cardBackgroundColor="@color/surface_dark"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="2dp"
+    app:strokeColor="@color/border"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Row 1: Name + Type Badge -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvItemName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Item Name"
+                android:textColor="@color/cream"
+                android:textSize="17sp"
+                android:fontFamily="serif"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/tvTypeBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INGREDIENT"
+                android:textSize="9sp"
+                android:letterSpacing="0.12"
+                android:textColor="@color/amber"
+                android:background="@drawable/bg_badge_ingredient"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- Row 2: Star Rating -->
+        <LinearLayout
+            android:id="@+id/starContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="4dp">
+
+            <!-- Stars are added programmatically -->
+            <ImageView android:id="@+id/star1" android:layout_width="28dp" android:layout_height="28dp"
+                android:src="@drawable/ic_star_outline" android:padding="2dp" android:clickable="true"
+                android:focusable="true" android:contentDescription="1 star" />
+            <ImageView android:id="@+id/star2" android:layout_width="28dp" android:layout_height="28dp"
+                android:src="@drawable/ic_star_outline" android:padding="2dp" android:clickable="true"
+                android:focusable="true" android:contentDescription="2 stars" />
+            <ImageView android:id="@+id/star3" android:layout_width="28dp" android:layout_height="28dp"
+                android:src="@drawable/ic_star_outline" android:padding="2dp" android:clickable="true"
+                android:focusable="true" android:contentDescription="3 stars" />
+            <ImageView android:id="@+id/star4" android:layout_width="28dp" android:layout_height="28dp"
+                android:src="@drawable/ic_star_outline" android:padding="2dp" android:clickable="true"
+                android:focusable="true" android:contentDescription="4 stars" />
+            <ImageView android:id="@+id/star5" android:layout_width="28dp" android:layout_height="28dp"
+                android:src="@drawable/ic_star_outline" android:padding="2dp" android:clickable="true"
+                android:focusable="true" android:contentDescription="5 stars" />
+
+            <TextView
+                android:id="@+id/tvRatingNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+                android:text="0 / 5"
+                android:textColor="@color/light_grey2"
+                android:textSize="11sp"
+                android:fontFamily="monospace" />
+        </LinearLayout>
+
+        <!-- Row 3: Notes -->
+        <TextView
+            android:id="@+id/tvNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/light_grey2"
+            android:textSize="12sp"
+            android:lineSpacingMultiplier="1.5"
+            android:layout_marginTop="4dp"
+            android:visibility="gone" />
+
+        <!-- Row 4: Tags -->
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:chipSpacingHorizontal="4dp"
+            app:chipSpacingVertical="2dp" />
+
+        <!-- Row 5: Action buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_marginTop="12dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEdit"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Edit"
+                android:textColor="@color/amber"
+                android:textSize="11sp"
+                app:iconTint="@color/amber" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDelete"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="Delete"
+                android:textColor="@color/light_grey2"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

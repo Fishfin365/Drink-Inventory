@@ -26,6 +26,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".InventoryActivity" />
         <activity android:name=".LogoutActivity" />
+        <activity android:name=".RatingActivity" />
     </application>
 
 </manifest>
