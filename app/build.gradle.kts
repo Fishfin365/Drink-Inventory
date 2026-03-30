@@ -68,8 +68,7 @@ dependencies {
 
     //ui shapes n stuff
     implementation("androidx.graphics:graphics-shapes:1.0.1")
-    implementation(libs.material)
-    implementation("com.google.android.material:material:1.11.0")
+    implementation("com.google.android.material:material:1.13.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -19,11 +20,11 @@ public class MainActivity extends AppCompatActivity {
 
         auth = LoginFirebaseBackend.getAuth();
 
-        Button inventoryButton = findViewById(R.id.inventory);
-        Button recipeButton = findViewById(R.id.recipe_browser);
-        Button rateItemButton = findViewById(R.id.rate_item);
-        Button leaderboardButton = findViewById(R.id.leaderboard);
-        Button logoutButton = findViewById(R.id.logoutButton);
+        MaterialButton inventoryButton = findViewById(R.id.inventory);
+        MaterialButton recipeButton = findViewById(R.id.recipe_browser);
+        MaterialButton rateItemButton = findViewById(R.id.rate_item);
+        MaterialButton leaderboardButton = findViewById(R.id.leaderboard);
+        MaterialButton logoutButton = findViewById(R.id.logoutButton);
 
         // Navigation for buttons
         if (inventoryButton != null) {
@@ -44,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
             rateItemButton.setOnClickListener(v -> {
                 Intent intent1 = new Intent(MainActivity.this, RatingActivity.class);
                 startActivity(intent1);
+            });
+        }
+
+        if (recipeButton != null) {
+            recipeButton.setOnClickListener(v -> {
+                Intent intent2 = new Intent(MainActivity.this, RecipeActivity.class);
+                startActivity(intent2);
             });
         }
 

@@ -13,6 +13,7 @@ import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
 import com.firebase.ui.auth.IdpResponse;
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -33,7 +34,7 @@ public class LoginStartActivity extends AppCompatActivity {
             setContentView(R.layout.activityloginstartpage);
 
             // Updated ID to match activityloginstartpage.xml
-            Button login_Button = findViewById(R.id.login);
+            MaterialButton login_Button = findViewById(R.id.login);
 
             if (login_Button != null) {
                 login_Button.setOnClickListener(v -> {

@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -34,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showStartPage() {
         setContentView(R.layout.activityloginstartpage);
-        Button startLoginButton = findViewById(R.id.login);
+        MaterialButton startLoginButton = findViewById(R.id.login);
         if (startLoginButton != null) {
             startLoginButton.setOnClickListener(v -> showLoginForm());
         }

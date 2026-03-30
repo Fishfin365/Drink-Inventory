@@ -1,6 +1,7 @@
 package com.example.drinkinventoryapp;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -55,12 +56,13 @@ public class RatingActivity extends AppCompatActivity {
         setContentView(R.layout.activityratingpage);
 
         setupToolbar();
-        setupTabs();
+        //setupTabs();
         setupSummaryBar();
         setupRecyclerView();
         setupSearch();
         setupSortSpinner();
         setupFab();
+        setupBack();
 
         //loadData();  
         applyFilters();
@@ -75,25 +77,25 @@ public class RatingActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-    private void setupTabs() {
-        tabLayout = findViewById(R.id.tabLayout);
-        tabLayout.addTab(tabLayout.newTab().setText("All"));
-        tabLayout.addTab(tabLayout.newTab().setText("Ingredients"));
-        tabLayout.addTab(tabLayout.newTab().setText("Recipes"));
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()) {
-                    case 0: activeTab = "ALL"; break;
-                    case 1: activeTab = "INGREDIENT"; break;
-                    case 2: activeTab = "RECIPE"; break;
-                }
-                applyFilters();
-            }
-            @Override public void onTabUnselected(TabLayout.Tab tab) {}
-            @Override public void onTabReselected(TabLayout.Tab tab) {}
-        });
-    }
+//    private void setupTabs() {
+//        tabLayout = findViewById(R.id.tabLayout);
+//        tabLayout.addTab(tabLayout.newTab().setText("All"));
+//        tabLayout.addTab(tabLayout.newTab().setText("Ingredients"));
+//        tabLayout.addTab(tabLayout.newTab().setText("Recipes"));
+//
+//        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+//            @Override public void onTabSelected(TabLayout.Tab tab) {
+//                switch (tab.getPosition()) {
+//                    case 0: activeTab = "ALL"; break;
+//                    case 1: activeTab = "INGREDIENT"; break;
+//                    case 2: activeTab = "RECIPE"; break;
+//                }
+//                applyFilters();
+//            }
+//            @Override public void onTabUnselected(TabLayout.Tab tab) {}
+//            @Override public void onTabReselected(TabLayout.Tab tab) {}
+//        });
+//    }
 
     private void setupSummaryBar() {
         tvTotalRated = findViewById(R.id.tvTotalRated);
@@ -165,9 +167,20 @@ public class RatingActivity extends AppCompatActivity {
         });
     }
 
+    private void goToMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     private void setupFab() {
         FloatingActionButton fab = findViewById(R.id.fabAddRating);
         fab.setOnClickListener(v -> showAddEditDialog(null, -1));
+    }
+
+    private void setupBack() {
+        FloatingActionButton fab = findViewById(R.id.fabBackButton);
+        fab.setOnClickListener(v -> goToMainActivity());
     }
 
     // -------------------------------------------------------------------------
@@ -267,8 +280,8 @@ public class RatingActivity extends AppCompatActivity {
         TextView tvTitle     = dialog.findViewById(R.id.tvDialogTitle);
         EditText etName      = dialog.findViewById(R.id.etName);
         Spinner  spinType    = dialog.findViewById(R.id.spinnerType);
-        EditText etNotes     = dialog.findViewById(R.id.etNotes);
-        EditText etTags      = dialog.findViewById(R.id.etTags);
+        //EditText etNotes     = dialog.findViewById(R.id.etNotes);
+        //EditText etTags      = dialog.findViewById(R.id.etTags);
 
         ImageView[] dStars = {
                 dialog.findViewById(R.id.dStar1),
@@ -294,8 +307,8 @@ public class RatingActivity extends AppCompatActivity {
         if (isEdit) {
             etName.setText(existingItem.getName());
             spinType.setSelection(existingItem.getType() == RateItem.Type.RECIPE ? 1 : 0);
-            etNotes.setText(existingItem.getNotes());
-            etTags.setText(existingItem.getTagsAsString());
+            //etNotes.setText(existingItem.getNotes());
+            //etTags.setText(existingItem.getTagsAsString());
             updateDialogStars(dStars, existingItem.getRating());
         }
 
@@ -323,21 +336,21 @@ public class RatingActivity extends AppCompatActivity {
 
             RateItem.Type type = spinType.getSelectedItemPosition() == 1
                     ? RateItem.Type.RECIPE : RateItem.Type.INGREDIENT;
-            String notes = etNotes.getText().toString().trim();
-            List<String> tags = RateItem.parseTags(etTags.getText().toString());
+            //String notes = etNotes.getText().toString().trim();
+            //List<String> tags = RateItem.parseTags(etTags.getText().toString());
 
             if (isEdit) {
                 existingItem.setName(name);
                 existingItem.setType(type);
                 existingItem.setRating(selectedRating[0]);
-                existingItem.setNotes(notes);
-                existingItem.setTags(tags);
+                //existingItem.setNotes(notes);
+                //existingItem.setTags(tags);
                 existingItem.setUpdatedAt(System.currentTimeMillis());
                 // Persist: repository.update(existingItem);
                 applyFilters();
                 Toast.makeText(this, "Updated " + name, Toast.LENGTH_SHORT).show();
             } else {
-                RateItem newItem = new RateItem(name, type, selectedRating[0], notes, tags);
+                RateItem newItem = new RateItem(name, type, selectedRating[0]);
                 allItems.add(newItem);
                 // Persist: repository.insert(newItem);
                 applyFilters();

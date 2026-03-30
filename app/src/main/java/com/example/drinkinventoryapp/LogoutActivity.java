@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LogoutActivity extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class LogoutActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        Button logoutButton = findViewById(R.id.logoutButton);
+        MaterialButton logoutButton = findViewById(R.id.logoutButton);
         if (logoutButton != null) {
             logoutButton.setOnClickListener(view -> signOut());
         } else {

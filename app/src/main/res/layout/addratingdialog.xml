@@ -91,42 +91,6 @@
                 android:clickable="true" android:focusable="true" android:contentDescription="5 stars" />
         </LinearLayout>
 
-        <!-- Notes -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Tasting notes (optional)"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@color/amber"
-            android:layout_marginBottom="14dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etNotes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/cream"
-                android:inputType="textMultiLine"
-                android:minLines="2"
-                android:maxLines="4" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!-- Tags -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Tags (comma-separated)"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxStrokeColor="@color/amber"
-            android:layout_marginBottom="24dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etTags"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/cream"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
         <!-- Action Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -149,6 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Save"
+                app:cornerRadius="15dp"
                 android:backgroundTint="@color/orange_200"
                 android:textColor="@color/bg_dark" />
         </LinearLayout>

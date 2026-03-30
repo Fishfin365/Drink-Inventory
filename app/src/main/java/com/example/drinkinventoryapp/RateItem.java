@@ -24,7 +24,7 @@ import java.util.List;
             this.updatedAt = System.currentTimeMillis();
         }
 
-        public RateItem(String name, Type type, int rating, String notes, List<String> tags) {
+        public RateItem(String name, Type type, int rating) {
             this.name = name;
             this.type = type;
             this.rating = rating;

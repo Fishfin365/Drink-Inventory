@@ -20,16 +20,13 @@
         android:textColor="@color/light_grey2"
         android:textSize="30sp"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/login"
+            style="@style/App.Button.Primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="@color/white"
             android:layout_gravity="center"
-            android:background="@color/mid_green"
-            android:layout_marginTop="20dp"
-            android:padding="30dp"
-            android:id="@+id/login"
-            android:fontFamily="monospace"
+            android:layout_marginTop="40dp"
             android:text="@string/login_button"/>
 
 

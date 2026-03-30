@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiskey_brown">
+
+    <!-- App Bar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/whiskey_brown"
+        app:elevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="48dp"
+            android:paddingBottom="12dp">
+
+            <!-- Header Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="4dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Liquor-Lab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="monospace"
+                        android:textSize="30sp"
+                        android:textColor="@color/light_grey2"
+                        android:letterSpacing="-0.02" />
+
+                    <TextView
+                        android:text="Cocktail Recipe Browser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="monospace"
+                        android:textSize="13sp"
+                        android:textColor="@color/light_grey2"
+                        android:layout_marginTop="2dp" />
+                </LinearLayout>
+
+                <!-- Avatar / Profile icon -->
+<!--                <ImageView-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:src="@drawable/ic_profile"-->
+<!--                    android:background="@drawable/bg_avatar_circle"-->
+<!--                    android:padding="8dp" />-->
+            </LinearLayout>
+
+            <!-- Search Bar -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/mossy_green1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="14dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_search"
+                        app:tint="@color/light_grey2" />
+
+                    <EditText
+                        android:id="@+id/searchBar"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:hint="Search recipes…"
+                        android:textColor="@color/light_grey2"
+                        android:textSize="14sp"
+                        android:fontFamily="monospace"
+                        android:background="@null"
+                        android:inputType="text"
+                        android:imeOptions="actionSearch"
+                        android:singleLine="true" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Category Chips -->
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:singleSelection="true"
+                app:selectionRequired="true" />
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Recipe Grid -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="14dp"
+        android:paddingBottom="24dp"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="20dp"
+        android:contentDescription="Back"
+        android:src="@drawable/ic_back_button"
+        app:backgroundTint="@color/amber"
+        app:tint="@color/bg_dark"
+        app:elevation="6dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

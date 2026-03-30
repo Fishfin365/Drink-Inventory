@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <LinearLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,17 +25,17 @@
             app:titleTextAppearance="@style/ToolbarTitle" />
 
         <!-- Tab Layout -->
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@color/whiskey_brown"
-            app:tabTextColor="@color/light_grey2"
-            app:tabSelectedTextColor="@color/light_grey2"
-            app:tabIndicatorColor="@color/orange_200"
-            app:tabIndicatorHeight="2dp"
-            app:tabMode="fixed"
-            app:tabGravity="fill" />
+<!--        <com.google.android.material.tabs.TabLayout-->
+<!--            android:id="@+id/tabLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="48dp"-->
+<!--            android:background="@color/whiskey_brown"-->
+<!--            app:tabTextColor="@color/light_grey2"-->
+<!--            app:tabSelectedTextColor="@color/light_grey2"-->
+<!--            app:tabIndicatorColor="@color/orange_200"-->
+<!--            app:tabIndicatorHeight="2dp"-->
+<!--            app:tabMode="fixed"-->
+<!--            app:tabGravity="fill" />-->
 
         <!-- Summary Stats Bar -->
         <LinearLayout
@@ -60,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:text="TOTAL RATED"
                     android:textColor="@color/light_grey2"
-                    android:textSize="9sp"
+                    android:textSize="12sp"
                     android:letterSpacing="0.12" />
             </LinearLayout>
 
@@ -91,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:text="AVG RATING"
                     android:textColor="@color/light_grey2"
-                    android:textSize="9sp"
+                    android:textSize="12sp"
                     android:letterSpacing="0.12" />
             </LinearLayout>
 
@@ -122,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:text="TOP RATED"
                     android:textColor="@color/light_grey2"
-                    android:textSize="9sp"
+                    android:textSize="12sp"
                     android:letterSpacing="0.12" />
             </LinearLayout>
         </LinearLayout>
@@ -144,7 +151,7 @@
             <EditText
                 android:id="@+id/etSearch"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_search"
                 android:hint="Search…"
@@ -160,7 +167,7 @@
             <Spinner
                 android:id="@+id/spinnerSort"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:layout_marginStart="8dp"
                 android:background="@drawable/bg_spinner"
                 android:paddingStart="10dp"
@@ -174,7 +181,9 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:clipToPadding="false"
-            android:paddingBottom="80dp" />
+            android:paddingBottom="60dp" />
+
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddRating"
@@ -188,4 +197,16 @@
         app:tint="@color/bg_dark"
         app:elevation="6dp" />
 
-    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="20dp"
+        android:contentDescription="Back"
+        android:src="@drawable/ic_back_button"
+        app:backgroundTint="@color/amber"
+        app:tint="@color/bg_dark"
+        app:elevation="6dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
