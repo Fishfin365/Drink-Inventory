@@ -55,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+        if (leaderboardButton != null) {
+            leaderboardButton.setOnClickListener(v -> {
+                Intent intent3 = new Intent(MainActivity.this, LeaderboardActivity.class);
+                startActivity(intent3);
+            });
+        }
+
         // Auth listener to handle session state
         authListener = firebaseAuth -> {
             FirebaseUser user = firebaseAuth.getCurrentUser();
