@@ -120,7 +120,6 @@ public class RecipeActivity extends AppCompatActivity {
         FloatingActionButton fab = findViewById(R.id.fabBackButton);
         fab.setOnClickListener(v -> goToMainActivity());
     }
-
     private void setupAdd() {
         FloatingActionButton fab = findViewById(R.id.fabAddRecipe);
         fab.setOnClickListener(v -> goToAddRecipeActivity());
