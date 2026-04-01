@@ -10,11 +10,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DrinkInventoryApp">
+        android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
 
         <!-- LoginActivity is now the LAUNCHER activity -->
         <activity
-            android:name=".LoginStartActivity"
+            android:name=".LoginActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
@@ -22,12 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"/>
+
         <activity android:name=".MainActivity" />
         <activity android:name=".InventoryActivity" />
         <activity android:name=".LogoutActivity" />
-        <activity android:name=".RatingActivity" />
         <activity android:name=".RecipeActivity" />
+        <activity android:name=".RecipeDetailActivity" />
     </application>
 
 </manifest>

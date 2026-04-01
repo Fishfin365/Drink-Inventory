@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    //id("com.android.application")
     id("com.google.gms.google-services")
 }
 
@@ -53,6 +52,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.appcompat)
+    
     //firebase
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.auth)
@@ -61,14 +61,23 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
 
     // Add FirebaseUI Auth for easy sign-in UI
-    implementation("com.firebaseui:firebase-ui-auth:8.0.2") // Adjust version as needed
+    implementation("com.firebaseui:firebase-ui-auth:8.0.2")
 
     // Google Sign In SDK (required for Google sign-in with FirebaseUI)
-    implementation("com.google.android.gms:play-services-auth:20.5.0") // Adjust version as needed
+    implementation("com.google.android.gms:play-services-auth:20.5.0")
 
     //ui shapes n stuff
     implementation("androidx.graphics:graphics-shapes:1.0.1")
     implementation("com.google.android.material:material:1.13.0")
+
+    //api stuff
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
+    
+    // Image loading
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
