@@ -43,7 +43,7 @@ public class InventoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activityinventorypage);
 
-        // Init Firebase
+        // get firebase instances
         db = LoginFirebaseBackend.getDb();
         auth = LoginFirebaseBackend.getAuth();
         FirebaseUser currentUser = auth.getCurrentUser();
@@ -61,7 +61,7 @@ public class InventoryActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_ingredients);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Start with empty adapter, load from DB
+        // empty adapter to start, we'll load the real data later
         adapter = new IngredientAdapter(new ArrayList<>(), item -> {
             if (item.getId() != null) {
                 getInventoryCollection().document(item.getId()).delete()
@@ -72,7 +72,7 @@ public class InventoryActivity extends AppCompatActivity {
 
         loadInventoryFromDatabase();
 
-        // Add Button
+        // handle adding a new ingredient
         ImageButton addButton = findViewById(R.id.btn_add);
         addButton.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -98,7 +98,7 @@ public class InventoryActivity extends AppCompatActivity {
                 if (!name.isEmpty()) {
                     Ingredient newIngredient = new Ingredient(name, 1, volume.isEmpty() ? "N/A" : volume);
                     
-                    // Add to firestore
+                    // push to firebase
                     getInventoryCollection().add(newIngredient).addOnSuccessListener(docRef -> {
                         newIngredient.setId(docRef.getId());
                         adapter.addItem(newIngredient);
@@ -128,7 +128,7 @@ public class InventoryActivity extends AppCompatActivity {
             adapter.setEditMode(isEditMode);
         });
 
-        // Delete Button Toggle
+        // toggle the delete mode on and off
         deleteButton.setOnClickListener(v -> {
             isDeleteMode = !isDeleteMode;
             if (isDeleteMode) {
@@ -188,7 +188,7 @@ public class InventoryActivity extends AppCompatActivity {
     }
 
     private void saveAllEditsToDatabase() {
-        // Iterate through all tracked items and push them to database if they exist
+        // Iterate through all tracked items and push them to the database if they exist
         for (Ingredient i : adapter.getAllItems()) {
             if (i.getId() != null) {
                 getInventoryCollection().document(i.getId()).set(i);

@@ -1,5 +1,4 @@
 package com.example.drinkinventoryapp;
-
 import com.google.firebase.firestore.DocumentId;
 
 public class Ingredient {
@@ -10,9 +9,8 @@ public class Ingredient {
     private String volume;
 
     public Ingredient() {
-        // Needed for Firebase
+        // We need this for Firebase
     }
-
     public Ingredient(String name, int count, String volume) {
         this.name = name;
         this.count = count;

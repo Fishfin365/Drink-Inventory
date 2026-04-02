@@ -38,13 +38,13 @@ public class RecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activityrecipespage);
 
-        // Initialize UI components
+        // grab UI references
         recyclerView = findViewById(R.id.recyclerView);
         searchBar = findViewById(R.id.searchBar);
         api = ApiClient.getClient().create(CocktailAPI.class);
         firebaseProvider = new FirebaseDrinkProvider();
 
-        // Setup RecyclerView
+        // hook up the list view
         adapter = new RecipeAdapter();
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
@@ -61,16 +61,47 @@ public class RecipeActivity extends AppCompatActivity {
         setupBack();
         setupAdd();
         
-        // Load some initial drinks
-        performSearch("margarita");
+        // load everything initially so the page isn't empty
+        loadInitialRecipes();
+    }
+
+    private void loadInitialRecipes() {
+        final List<Drink> defaultResults = new ArrayList<>();
+        
+        // fetch margarita stuff from the public api first
+        api.searchByName("margarita").enqueue(new Callback<DrinkResponse>() {
+            @Override
+            public void onResponse(Call<DrinkResponse> call, Response<DrinkResponse> response) {
+                if (response.isSuccessful() && response.body() != null && response.body().drinks != null) {
+                    defaultResults.addAll(response.body().drinks);
+                }
+                loadAllFirebase(defaultResults);
+            }
+            @Override
+            public void onFailure(Call<DrinkResponse> call, Throwable t) {
+                loadAllFirebase(defaultResults);
+            }
+        });
+    }
+
+    private void loadAllFirebase(List<Drink> existingResults) {
+        firebaseProvider.getAllCustomDrinks(customDrinks -> {
+            for (com.example.drinkinventoryapp.model.CustomDrink custom : customDrinks) {
+                existingResults.add(0, custom.toDrink()); // Custom at top
+            }
+            adapter.setDrinks(existingResults);
+        });
     }
 
     private void performSearch(String query) {
-        if (query.isEmpty()) return;
+        if (query.isEmpty()) {
+            loadInitialRecipes();
+            return;
+        }
 
         final List<Drink> combinedResults = new ArrayList<>();
 
-        // 1. Search in Public API
+                // hit the public api for the search keyword
         api.searchByName(query).enqueue(new Callback<DrinkResponse>() {
             @Override
             public void onResponse(Call<DrinkResponse> call, Response<DrinkResponse> response) {
@@ -78,13 +109,13 @@ public class RecipeActivity extends AppCompatActivity {
                     combinedResults.addAll(response.body().drinks);
                 }
                 
-                // 2. Search in Firebase (Custom Drinks) after API results are added
+                // tack on any custom firebase drinks after the api results come back
                 searchFirebase(query, combinedResults);
             }
 
             @Override
             public void onFailure(Call<DrinkResponse> call, Throwable t) {
-                // If API fails, still try to search Firebase
+                // if the api crashes just search the firebase stuff anyway
                 searchFirebase(query, combinedResults);
             }
         });
