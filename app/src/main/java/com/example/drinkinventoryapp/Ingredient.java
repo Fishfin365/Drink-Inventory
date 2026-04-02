@@ -1,14 +1,30 @@
 package com.example.drinkinventoryapp;
 
+import com.google.firebase.firestore.DocumentId;
+
 public class Ingredient {
+    @DocumentId
+    private String id;
     private String name;
     private int count;
     private String volume;
+
+    public Ingredient() {
+        // Needed for Firebase
+    }
 
     public Ingredient(String name, int count, String volume) {
         this.name = name;
         this.count = count;
         this.volume = volume;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {

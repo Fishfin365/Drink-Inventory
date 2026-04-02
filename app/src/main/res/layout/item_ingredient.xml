@@ -30,28 +30,40 @@
                 android:textStyle="bold"
                 android:textColor="@android:color/black"/>
 
+            <!-- View mode text -->
             <TextView
                 android:id="@+id/ingredient_volume"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Volume: 750ml"
                 android:textSize="14sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/darker_gray"
+                android:visibility="visible"/>
 
+            <!-- Edit mode input -->
+            <EditText
+                android:id="@+id/ingredient_volume_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:hint="Volume (e.g. 750ml)"
+                android:inputType="text"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:visibility="gone"/>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/ingredient_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_badge"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="6dp"
-            android:text="Count: 2"
-            android:textSize="14sp"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"/>
+        <ImageButton
+            android:id="@+id/btn_remove_item"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_delete"
+            app:tint="#D32F2F"
+            android:visibility="gone"
+            android:contentDescription="Remove Item" />
 
     </LinearLayout>
 
