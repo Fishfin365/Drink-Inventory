@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiskey_brown">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="40dp"
+            android:textColor="@color/light_grey2"
+            android:text="Create Recipe"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25dp"
+            android:textColor="@color/light_grey2"
+            android:text="Name of Recipe"/>
+
+        </LinearLayout>
+
+
+        <EditText
+            android:layout_width="380dp"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="230dp"
+            android:textSize="25dp"
+            android:background="@color/mossy_green1"
+            android:textColor="@color/light_grey2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="335dp"
+            android:textSize="25dp"
+            android:textColor="@color/light_grey2"
+            android:text="Ingredients"/>
+
+
+        <EditText
+            android:layout_marginTop="380dp"
+            android:background="@color/mossy_green1"
+            android:layout_width="380dp"
+            android:layout_height="45dp"
+            android:id="@+id/Ingredients"/>
+
+
+
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddRecipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:contentDescription="Add Recipe"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/amber"
+        app:tint="@color/bg_dark"
+        app:elevation="6dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="20dp"
+        android:contentDescription="Back"
+        android:src="@drawable/ic_back_button"
+        app:backgroundTint="@color/amber"
+        app:tint="@color/bg_dark"
+        app:elevation="6dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+

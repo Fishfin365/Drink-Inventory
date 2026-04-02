@@ -59,6 +59,7 @@ public class RecipeActivity extends AppCompatActivity {
         });
 
         setupBack();
+        setupAdd();
         
         // Load some initial drinks
         performSearch("margarita");
@@ -109,8 +110,19 @@ public class RecipeActivity extends AppCompatActivity {
         finish();
     }
 
+    private void goToAddRecipeActivity() {
+        Intent intent1 = new Intent(this, AddRecipeActivity.class);
+        startActivity(intent1);
+        finish();
+    }
+
     private void setupBack() {
         FloatingActionButton fab = findViewById(R.id.fabBackButton);
         fab.setOnClickListener(v -> goToMainActivity());
+    }
+
+    private void setupAdd() {
+        FloatingActionButton fab = findViewById(R.id.fabAddRecipe);
+        fab.setOnClickListener(v -> goToAddRecipeActivity());
     }
 }

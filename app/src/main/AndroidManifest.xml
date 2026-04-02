@@ -29,6 +29,7 @@
         <activity android:name=".RecipeActivity" />
         <activity android:name=".RecipeDetailActivity" />
         <activity android:name=".RatingActivity" />
+        <activity android:name=".AddRecipeActivity" />
     </application>
 
 </manifest>

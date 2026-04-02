@@ -127,6 +127,18 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddRecipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="20dp"
+        android:contentDescription="Add Recipe"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/amber"
+        app:tint="@color/bg_dark"
+        app:elevation="6dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabBackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

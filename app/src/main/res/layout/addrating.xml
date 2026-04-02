@@ -7,7 +7,7 @@
     android:layout_marginHorizontal="12dp"
     android:layout_marginTop="6dp"
     android:layout_marginBottom="2dp"
-    app:cardBackgroundColor="@color/surface_dark"
+    app:cardBackgroundColor="@color/mossy_green1"
     app:cardCornerRadius="6dp"
     app:cardElevation="2dp"
     app:strokeColor="@color/border"
@@ -88,7 +88,7 @@
                 android:layout_marginStart="8dp"
                 android:text="0 / 5"
                 android:textColor="@color/light_grey2"
-                android:textSize="11sp"
+                android:textSize="13sp"
                 android:fontFamily="monospace" />
         </LinearLayout>
 
