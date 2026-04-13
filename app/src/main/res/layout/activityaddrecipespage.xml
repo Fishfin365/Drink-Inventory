@@ -42,7 +42,7 @@
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     android:background="@color/mossy_green1"
-                    android:src="@drawable/ic_launcher_foreground" />
+                    android:src="@mipmap/ic_launcher" />
 
                 <ProgressBar
                     android:id="@+id/uploadProgress"

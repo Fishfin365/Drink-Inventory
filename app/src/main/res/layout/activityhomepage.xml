@@ -4,6 +4,7 @@
     style="@style/Theme.DrinkInventoryApp"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:backgroundTint="@color/even_darker_grey"
     android:layout_height="match_parent">
 
     <TextView
