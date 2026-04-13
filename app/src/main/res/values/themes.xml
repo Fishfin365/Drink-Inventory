@@ -2,13 +2,19 @@
 <resources>
 
     <style name="Theme.DrinkInventoryApp" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/whiskey_brown</item>
-        <item name="colorOnPrimary">@color/light_grey2</item>
+        <item name="colorPrimary">@color/even_darker_grey</item>
+        <item name="colorPrimaryVariant">@color/dark_grey</item>
+        <item name="colorOnPrimary">@color/dark_grey</item>
+
+        <item name="android:colorBackground">@color/even_darker_grey</item>
+        <item name="colorSurface">#1E1E1E</item>
+        <item name="colorOnBackground">#FFFFFF</item>
+        <item name="colorOnSurface">#FFFFFF</item>
     </style>
 
     <style name="App.Button.Primary" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/mossy_green1</item>
-        <item name="android:textColor">@color/light_grey2</item>
+        <item name="backgroundTint">@color/orange_200</item>
+        <item name="android:textColor">@color/even_darker_grey</item>
         <item name="cornerRadius">20dp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">18dp</item>

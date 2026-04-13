@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/whiskey_brown"
+    style="@style/Theme.DrinkInventoryApp"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="170dp"
         android:layout_gravity="center"
-        android:background="@color/mossy_green1"
+        android:background="@color/even_darker_grey"
         android:textColor="@color/light_grey2"
         android:textSize="28dp"
         android:id="@+id/signin_prompt"

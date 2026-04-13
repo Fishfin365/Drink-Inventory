@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/whiskey_brown">
+    android:background="@color/even_darker_grey">
 
     <!-- Top App Bar / Toolbar area -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/whiskey_brown"
+        android:background="@color/dark_grey"
         android:elevation="4dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"

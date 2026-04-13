@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/whiskey_brown"
+    style="@style/Theme.DrinkInventoryApp"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -13,7 +13,7 @@
         android:layout_marginTop="48dp"
         android:textSize="26dp"
         android:fontFamily="monospace"
-        android:background="@color/whiskey_brown"
+        android:background="@color/dark_grey"
         android:textColor="@color/light_grey2"
         android:text="@string/app_name"/>
 
@@ -57,22 +57,25 @@
             android:text="Rate Item"
             android:textAllCaps="false"/>
 
-        <com.google.android.material.button.MaterialButton
-            style="@style/App.Button.Primary"
-            android:id="@+id/leaderboard"
-            android:layout_width="160dp"
-            android:layout_height="70dp"
-            android:padding="10dp"
-            android:layout_marginHorizontal="10dp"
-            android:text="Leaderboard"
-            android:textAllCaps="false"/>
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            style="@style/App.Button.Primary"-->
+<!--            android:id="@+id/leaderboard"-->
+<!--            android:layout_width="160dp"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_marginHorizontal="10dp"-->
+<!--            android:text="Leaderboard"-->
+<!--            android:textAllCaps="false"/>-->
 
     </LinearLayout>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/liquor_image"/>
+        android:id="@+id/logo"
+        android:layout_marginTop="75dp"
+        android:layout_gravity="center"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@mipmap/ic_launcher"/>
 
     <com.google.android.material.button.MaterialButton
         style="@style/App.Button.Primary"
@@ -82,6 +85,6 @@
         android:layout_gravity="center"
         android:text="Log out"
         android:textAllCaps="false"
-        android:layout_marginTop="300dp"/>
+        android:layout_marginTop="175dp"/>
 
 </LinearLayout>
