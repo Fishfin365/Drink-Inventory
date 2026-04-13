@@ -29,6 +29,38 @@
                 android:textSize="32sp"
                 android:textStyle="bold" />
 
+            <!-- Recipe Image Area -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/ivRecipeImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:background="@color/mossy_green1"
+                    android:src="@drawable/ic_launcher_foreground" />
+
+                <ProgressBar
+                    android:id="@+id/uploadProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/btnTakePhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp"
+                android:text="Take Photo"
+                android:backgroundTint="@color/amber"
+                android:textColor="@color/bg_dark" />
+
             <!-- Recipe Name -->
             <TextView
                 android:layout_width="wrap_content"
