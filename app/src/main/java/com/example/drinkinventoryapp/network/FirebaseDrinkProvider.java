@@ -1,29 +1,18 @@
 package com.example.drinkinventoryapp.network;
 
-import android.net.Uri;
 import com.example.drinkinventoryapp.model.CustomDrink;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class FirebaseDrinkProvider {
 
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private final FirebaseStorage storage = FirebaseStorage.getInstance();
 
     public interface DrinkCallback {
         void onCallback(List<CustomDrink> drinks);
-    }
-
-    public interface UploadCallback {
-        void onSuccess(String imageUrl);
-        void onFailure(Exception e);
     }
 
     public void getAllCustomDrinks(DrinkCallback callback) {
@@ -45,6 +34,7 @@ public class FirebaseDrinkProvider {
     }
 
     public void searchCustomDrinks(String query, DrinkCallback callback) {
+        // Basic search: fetch all and filter locally for better matching (Firestore doesn't support case-insensitive contains easily)
         db.collection("custom_drinks")
                 .get()
                 .addOnCompleteListener(task -> {
@@ -65,26 +55,5 @@ public class FirebaseDrinkProvider {
 
     public void saveCustomDrink(CustomDrink drink) {
         db.collection("custom_drinks").add(drink);
-    }
-
-    public void uploadImage(Uri imageUri, UploadCallback callback) {
-        String fileName = "drink_images/" + UUID.randomUUID().toString() + ".jpg";
-        StorageReference ref = storage.getReference().child(fileName);
-
-        ref.putFile(imageUri)
-                .continueWithTask(task -> {
-                    if (!task.isSuccessful()) {
-                        throw task.getException();
-                    }
-                    return ref.getDownloadUrl();
-                })
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Uri downloadUri = task.getResult();
-                        callback.onSuccess(downloadUri.toString());
-                    } else {
-                        callback.onFailure(task.getException());
-                    }
-                });
     }
 }
