@@ -4,14 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/whiskey_brown">
+    style="@style/Theme.DrinkInventoryApp">
 
     <!-- App Bar -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/whiskey_brown"
+        android:background="@color/even_darker_grey"
         app:elevation="0dp">
 
         <LinearLayout
@@ -121,6 +121,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/even_darker_grey"
         android:paddingHorizontal="14dp"
         android:paddingBottom="24dp"
         android:clipToPadding="false"

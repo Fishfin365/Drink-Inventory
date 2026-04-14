@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         MaterialButton inventoryButton = findViewById(R.id.inventory);
         MaterialButton recipeButton = findViewById(R.id.recipe_browser);
         MaterialButton rateItemButton = findViewById(R.id.rate_item);
-        MaterialButton leaderboardButton = findViewById(R.id.leaderboard);
+        //MaterialButton leaderboardButton = findViewById(R.id.leaderboard);
         MaterialButton logoutButton = findViewById(R.id.logoutButton);
 
         // Navigation for buttons
@@ -55,12 +55,12 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        if (leaderboardButton != null) {
-            leaderboardButton.setOnClickListener(v -> {
-                Intent intent3 = new Intent(MainActivity.this, LeaderboardActivity.class);
-                startActivity(intent3);
-            });
-        }
+//        if (leaderboardButton != null) {
+//            leaderboardButton.setOnClickListener(v -> {
+//                Intent intent3 = new Intent(MainActivity.this, LeaderboardActivity.class);
+//                startActivity(intent3);
+//            });
+//        }
 
         // Auth listener to handle session state
         authListener = firebaseAuth -> {

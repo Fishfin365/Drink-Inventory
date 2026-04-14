@@ -88,12 +88,11 @@ public class RateItemAdapter extends RecyclerView.Adapter<RateItemAdapter.Rating
 
         private final TextView tvName;
         private final TextView tvBadge;
-        private final ImageView[] stars;
         private final TextView tvRatingNum;
         private final TextView tvNotes;
         private final ChipGroup chipGroup;
-        private final MaterialButton btnEdit;
-        private final MaterialButton btnDelete;
+        private final View btnEdit;
+        private final View btnDelete;
 
         RatingViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -104,14 +103,6 @@ public class RateItemAdapter extends RecyclerView.Adapter<RateItemAdapter.Rating
             chipGroup   = itemView.findViewById(R.id.chipGroup);
             btnEdit     = itemView.findViewById(R.id.btnEdit);
             btnDelete   = itemView.findViewById(R.id.btnDelete);
-
-            stars = new ImageView[]{
-                    itemView.findViewById(R.id.star1),
-                    itemView.findViewById(R.id.star2),
-                    itemView.findViewById(R.id.star3),
-                    itemView.findViewById(R.id.star4),
-                    itemView.findViewById(R.id.star5)
-            };
         }
 
         void bind(RateItem item, int position) {
@@ -120,54 +111,15 @@ public class RateItemAdapter extends RecyclerView.Adapter<RateItemAdapter.Rating
 
             // Type badge
             if (item.getType() == RateItem.Type.RECIPE) {
-                tvBadge.setText("RECIPE");
+                tvBadge.setText("- RECIPE");
                 tvBadge.setTextColor(ContextCompat.getColor(context, R.color.blue_light));
-                tvBadge.setBackgroundResource(R.drawable.bg_badge_recipe);
             } else {
-                tvBadge.setText("INGREDIENT");
+                tvBadge.setText("- INGREDIENT");
                 tvBadge.setTextColor(ContextCompat.getColor(context, R.color.amber));
-                tvBadge.setBackgroundResource(R.drawable.bg_badge_ingredient);
-            }
-
-            // Stars
-            bindStars(item.getRating());
-
-            // Tapping a star updates rating inline
-            for (int i = 0; i < stars.length; i++) {
-                final int starIndex = i + 1;
-                stars[i].setOnClickListener(v -> {
-                    item.setRating(starIndex);
-                    item.setUpdatedAt(System.currentTimeMillis());
-                    bindStars(starIndex);
-                    if (listener != null) {
-                        listener.onRatingChanged(item, starIndex, getAdapterPosition());
-                    }
-                });
             }
 
             // Rating label
-            tvRatingNum.setText(item.getRating() + " / 5");
-
-            // Notes
-            String notes = item.getNotes();
-            if (notes != null && !notes.isEmpty()) {
-                tvNotes.setText(notes);
-                tvNotes.setVisibility(View.VISIBLE);
-            } else {
-                tvNotes.setVisibility(View.GONE);
-            }
-
-            // Tags
-            chipGroup.removeAllViews();
-            for (String tag : item.getTags()) {
-                Chip chip = new Chip(context);
-                chip.setText(tag);
-                chip.setChipBackgroundColorResource(R.color.tag_bg);
-                chip.setTextColor(ContextCompat.getColor(context, R.color.muted));
-                chip.setTextSize(10f);
-                chip.setClickable(false);
-                chipGroup.addView(chip);
-            }
+            tvRatingNum.setText("⭐ " + item.getRating() + " / 5");
 
             // Buttons
             btnEdit.setOnClickListener(v -> {
@@ -176,15 +128,6 @@ public class RateItemAdapter extends RecyclerView.Adapter<RateItemAdapter.Rating
             btnDelete.setOnClickListener(v -> {
                 if (listener != null) listener.onDelete(item, getAdapterPosition());
             });
-        }
-
-        private void bindStars(int rating) {
-            for (int i = 0; i < stars.length; i++) {
-                stars[i].setImageResource(
-                        i < rating ? R.drawable.ic_star_filled : R.drawable.ic_star_outline
-                );
-            }
-            tvRatingNum.setText(rating + " / 5");
         }
     }
 }
