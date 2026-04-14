@@ -3,72 +3,137 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/whiskey_brown">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="20dp"
-        android:paddingTop="48dp"
-        android:paddingBottom="12dp">
+        android:layout_height="match_parent"
+        android:background="@color/even_darker_grey"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="40dp"
-            android:textColor="@color/light_grey2"
-            android:text="Create Recipe"/>
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:background="@color/even_darker_grey"
+            android:paddingBottom="100dp">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="32dp"
+                android:gravity="center"
+                android:text="Create Recipe"
+                android:textColor="@color/light_grey2"
+                android:textSize="32sp"
+                android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="180dp">
+            <!-- Recipe Image Area -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="25dp"
-            android:textColor="@color/light_grey2"
-            android:text="Name of Recipe"/>
+                <ImageView
+                    android:id="@+id/ivRecipeImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:background="@color/mossy_green1"
+                    android:src="@mipmap/ic_launcher" />
+
+                <ProgressBar
+                    android:id="@+id/uploadProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/btnTakePhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="24dp"
+                android:text="Take Photo"
+                android:backgroundTint="@color/amber"
+                android:textColor="@color/bg_dark" />
+
+            <!-- Recipe Name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Name of Recipe"
+                android:textColor="@color/light_grey2"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/etRecipeName"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/mossy_green1"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/light_grey2"
+                android:textSize="18sp"
+                android:layout_marginBottom="24dp"
+                android:inputType="textCapWords"
+                android:hint="e.g. Classic Margarita"
+                android:textColorHint="#A0A0A0"/>
+
+            <!-- Ingredients -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Ingredients (comma separated)"
+                android:textColor="@color/light_grey2"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/etRecipeIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="80dp"
+                android:background="@color/mossy_green1"
+                android:padding="16dp"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:textColor="@color/light_grey2"
+                android:textSize="18sp"
+                android:layout_marginBottom="24dp"
+                android:hint="e.g. Tequila 2oz, Lime Juice 1oz"
+                android:textColorHint="#A0A0A0"/>
+
+            <!-- Instructions -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Instructions"
+                android:textColor="@color/light_grey2"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/etRecipeInstructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="120dp"
+                android:background="@color/mossy_green1"
+                android:padding="16dp"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:textColor="@color/light_grey2"
+                android:textSize="18sp"
+                android:layout_marginBottom="32dp"
+                android:hint="e.g. Shake well with ice, then strain..."
+                android:textColorHint="#A0A0A0"/>
 
         </LinearLayout>
-
-
-        <EditText
-            android:layout_width="380dp"
-            android:layout_height="45dp"
-            android:gravity="center_vertical"
-            android:layout_marginTop="230dp"
-            android:textSize="25dp"
-            android:background="@color/mossy_green1"
-            android:textColor="@color/light_grey2"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="335dp"
-            android:textSize="25dp"
-            android:textColor="@color/light_grey2"
-            android:text="Ingredients"/>
-
-
-        <EditText
-            android:layout_marginTop="380dp"
-            android:background="@color/mossy_green1"
-            android:layout_width="380dp"
-            android:layout_height="45dp"
-            android:id="@+id/Ingredients"/>
-
-
-
-
-
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddRecipe"
@@ -76,7 +141,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="20dp"
-        android:contentDescription="Add Recipe"
+        android:contentDescription="Save Recipe"
         android:src="@drawable/ic_add"
         app:backgroundTint="@color/amber"
         app:tint="@color/bg_dark"
@@ -95,6 +160,3 @@
         app:elevation="6dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-
