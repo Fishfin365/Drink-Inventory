@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/whiskey_brown"
+    style="@style/Theme.DrinkInventoryApp"
     android:orientation="vertical"
+    android:background="@color/even_darker_grey"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,22 +12,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/whiskey_brown"
+        android:background="@color/even_darker_grey"
         android:padding="24dp"
         android:id="@+id/app_name"
         android:fontFamily="monospace"
         android:text="Liquor-Lab"
-        android:layout_marginTop="256dp"
+        android:layout_marginTop="200dp"
         android:textColor="@color/light_grey2"
-        android:textSize="30sp"/>
+        android:textSize="50sp"/>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@mipmap/ic_launcher"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/login"
             style="@style/App.Button.Primary"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="60dp"
             android:text="@string/login_button"/>
 
 

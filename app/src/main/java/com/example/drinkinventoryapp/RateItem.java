@@ -1,5 +1,6 @@
-
 package com.example.drinkinventoryapp;
+
+import com.google.firebase.firestore.DocumentId;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +10,10 @@ import java.util.List;
             INGREDIENT, RECIPE
         }
 
-        private long id;
+        @DocumentId
+        private String firebaseId;
         private String name;
+        private String userId;
         private Type type;
         private int rating;          // 1–5
         private String notes;
@@ -36,8 +39,11 @@ import java.util.List;
 
         // --- Getters & Setters ---
 
-        public long getId() { return id; }
-        public void setId(long id) { this.id = id; }
+        public String getFirebaseId() { return firebaseId; }
+        public void setFirebaseId(String firebaseId) { this.firebaseId = firebaseId; }
+
+        public String getUserId() { return userId; }
+        public void setUserId(String userId) { this.userId = userId; }
 
         public String getName() { return name; }
         public void setName(String name) { this.name = name; }
