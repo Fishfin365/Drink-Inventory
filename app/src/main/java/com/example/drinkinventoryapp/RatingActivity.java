@@ -21,10 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,10 +49,6 @@ public class RatingActivity extends AppCompatActivity {
 
     // Sort options shown in Spinner
     private static final String[] SORT_OPTIONS = {"Name", "Rating ↓", "Recent"};
-    
-    // Firebase
-    private FirebaseFirestore db;
-    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,16 +64,7 @@ public class RatingActivity extends AppCompatActivity {
         setupFab();
         setupBack();
 
-        db = LoginFirebaseBackend.getDb();
-        if (LoginFirebaseBackend.getAuth().getCurrentUser() != null) {
-            userId = LoginFirebaseBackend.getAuth().getCurrentUser().getUid();
-        } else {
-            Toast.makeText(this, "Not logged in!", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
-
-        loadData();  
+        //loadData();  
         applyFilters();
     }
 
@@ -139,9 +122,7 @@ public class RatingActivity extends AppCompatActivity {
             @Override
             public void onRatingChanged(RateItem item, int newRating, int position) {
                 // Persist rating change to your DB here
-                item.setRating(newRating);
-                item.setUpdatedAt(System.currentTimeMillis());
-                db.collection("ratings").document(item.getFirebaseId()).set(item);
+                // e.g. repository.updateRating(item.getId(), newRating);
                 updateSummaryBar();
                 Toast.makeText(RatingActivity.this,
                         item.getName() + " rated " + newRating + "★",
@@ -208,18 +189,7 @@ public class RatingActivity extends AppCompatActivity {
 
 
     private void loadData() {
-        db.collection("ratings").whereEqualTo("userId", userId).get().addOnCompleteListener(task -> {
-            if (task.isSuccessful() && task.getResult() != null) {
-                allItems.clear();
-                for (QueryDocumentSnapshot document : task.getResult()) {
-                    RateItem item = document.toObject(RateItem.class);
-                    allItems.add(item);
-                }
-                applyFilters();
-            } else {
-                Toast.makeText(this, "Failed to load ratings", Toast.LENGTH_SHORT).show();
-            }
-        });
+        // add the firebase stuff in here to see the items
     }
 
     private void applyFilters() {
@@ -228,11 +198,11 @@ public class RatingActivity extends AppCompatActivity {
         for (RateItem item : allItems) {
             // Tab filter
             if (!activeTab.equals("ALL")) {
-                if (item.getType() == null || !item.getType().name().equals(activeTab)) continue;
+                if (!item.getType().name().equals(activeTab)) continue;
             }
             // Search filter
             if (!searchQuery.isEmpty()) {
-                boolean matchName  = item.getName() != null && item.getName().toLowerCase(Locale.getDefault()).contains(searchQuery);
+                boolean matchName  = item.getName().toLowerCase(Locale.getDefault()).contains(searchQuery);
                 boolean matchNotes = item.getNotes() != null &&
                         item.getNotes().toLowerCase(Locale.getDefault()).contains(searchQuery);
                 boolean matchTag   = false;
@@ -251,7 +221,7 @@ public class RatingActivity extends AppCompatActivity {
         switch (sortMode) {
             case "NAME":
                 Collections.sort(filteredItems,
-                        Comparator.comparing(i -> i.getName() != null ? i.getName().toLowerCase(Locale.getDefault()) : ""));
+                        Comparator.comparing(i -> i.getName().toLowerCase(Locale.getDefault())));
                 break;
             case "RATING":
                 Collections.sort(filteredItems,
@@ -288,7 +258,7 @@ public class RatingActivity extends AppCompatActivity {
         tvAvgRating.setText(String.format(Locale.getDefault(), "%.1f", avg));
 
         // Abbreviate long names in the summary bar
-        String topName = top.getName() != null ? top.getName() : "Unknown";
+        String topName = top.getName();
         tvTopRated.setText(topName.length() > 8 ? topName.substring(0, 7) + "…" : topName);
     }
 
@@ -373,27 +343,18 @@ public class RatingActivity extends AppCompatActivity {
                 existingItem.setName(name);
                 existingItem.setType(type);
                 existingItem.setRating(selectedRating[0]);
+                //existingItem.setNotes(notes);
+                //existingItem.setTags(tags);
                 existingItem.setUpdatedAt(System.currentTimeMillis());
-                existingItem.setUserId(userId);
-                
-                db.collection("ratings")
-                        .document(existingItem.getFirebaseId()).set(existingItem)
-                        .addOnSuccessListener(aVoid -> {
-                            applyFilters();
-                            Toast.makeText(this, "Updated " + name, Toast.LENGTH_SHORT).show();
-                        });
+                // Persist: repository.update(existingItem);
+                applyFilters();
+                Toast.makeText(this, "Updated " + name, Toast.LENGTH_SHORT).show();
             } else {
                 RateItem newItem = new RateItem(name, type, selectedRating[0]);
-                newItem.setUserId(userId);
-                
-                db.collection("ratings")
-                        .add(newItem)
-                        .addOnSuccessListener(docRef -> {
-                            newItem.setFirebaseId(docRef.getId());
-                            allItems.add(newItem);
-                            applyFilters();
-                            Toast.makeText(this, "Added " + name, Toast.LENGTH_SHORT).show();
-                        });
+                allItems.add(newItem);
+                // Persist: repository.insert(newItem);
+                applyFilters();
+                Toast.makeText(this, "Added " + name, Toast.LENGTH_SHORT).show();
             }
 
             dialog.dismiss();
@@ -415,13 +376,10 @@ public class RatingActivity extends AppCompatActivity {
                 .setTitle("Delete Rating")
                 .setMessage("Remove the rating for \"" + item.getName() + "\"? This can't be undone.")
                 .setPositiveButton("Delete", (d, w) -> {
-                    db.collection("ratings")
-                            .document(item.getFirebaseId()).delete()
-                            .addOnSuccessListener(aVoid -> {
-                                allItems.remove(item);
-                                applyFilters();
-                                Toast.makeText(this, "Deleted " + item.getName(), Toast.LENGTH_SHORT).show();
-                            });
+                    allItems.remove(item);
+                    // Persist: repository.delete(item.getId());
+                    applyFilters();
+                    Toast.makeText(this, "Deleted " + item.getName(), Toast.LENGTH_SHORT).show();
                 })
                 .setNegativeButton("Cancel", null)
                 .show();

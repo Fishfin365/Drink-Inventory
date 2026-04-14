@@ -7,12 +7,14 @@ plugins {
 
 android {
     namespace = "com.example.drinkinventoryapp"
-    compileSdk = 36
+    compileSdk {
+        version = release(36)
+    }
 
     defaultConfig {
         applicationId = "com.example.drinkinventoryapp"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -54,14 +56,9 @@ dependencies {
     //firebase
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.auth)
-    implementation(libs.firebase.storage)
     implementation(platform("com.google.firebase:firebase-bom:34.10.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
-    
-    // UI components
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
-    implementation("androidx.cardview:cardview:1.0.0")
 
     // Add FirebaseUI Auth for easy sign-in UI
     implementation("com.firebaseui:firebase-ui-auth:8.0.2")
