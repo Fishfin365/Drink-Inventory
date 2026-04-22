@@ -54,14 +54,6 @@
                         android:textColor="@color/light_grey2"
                         android:layout_marginTop="2dp" />
                 </LinearLayout>
-
-                <!-- Avatar / Profile icon -->
-<!--                <ImageView-->
-<!--                    android:layout_width="40dp"-->
-<!--                    android:layout_height="40dp"-->
-<!--                    android:src="@drawable/ic_profile"-->
-<!--                    android:background="@drawable/bg_avatar_circle"-->
-<!--                    android:padding="8dp" />-->
             </LinearLayout>
 
             <!-- Search Bar -->
@@ -103,14 +95,38 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Category Chips -->
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chipGroup"
+            <!-- Filter Controls -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                app:singleSelection="true"
-                app:selectionRequired="true" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="12dp">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipFilterInventory"
+                    style="@style/Widget.MaterialComponents.Chip.Filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Inventory Only"
+                    android:textColor="@color/light_grey2"
+                    app:chipBackgroundColor="@color/mossy_green1"
+                    app:chipIcon="@drawable/ic_inventory"
+                    app:chipIconVisible="true"
+                    app:chipIconTint="@color/amber" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <!-- Category Chips -->
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chipGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true" />
+            </LinearLayout>
 
         </LinearLayout>
 
