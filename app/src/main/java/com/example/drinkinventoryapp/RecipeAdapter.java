@@ -20,9 +20,15 @@ import java.util.List;
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
 
     private List<Drink> drinks = new ArrayList<>();
+    private java.util.Map<String, Integer> ratingsMap = new java.util.HashMap<>();
 
     public void setDrinks(List<Drink> drinks) {
         this.drinks = drinks != null ? drinks : new ArrayList<>();
+        notifyDataSetChanged();
+    }
+
+    public void setRatingsMap(java.util.Map<String, Integer> ratingsMap) {
+        this.ratingsMap = ratingsMap != null ? ratingsMap : new java.util.HashMap<>();
         notifyDataSetChanged();
     }
 
@@ -39,6 +45,16 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         holder.title.setText(drink.strDrink);
         holder.category.setText(drink.strCategory);
 
+        if (drink.strDrink != null) {
+            String searchKey = drink.strDrink.toLowerCase().trim();
+            if (ratingsMap.containsKey(searchKey)) {
+                holder.rating.setText("⭐ " + ratingsMap.get(searchKey));
+                holder.rating.setVisibility(View.VISIBLE);
+            } else {
+                holder.rating.setVisibility(View.GONE);
+            }
+        }
+
         Glide.with(holder.itemView.getContext())
                 .load(drink.strDrinkThumb)
                 .into(holder.image);
@@ -48,6 +64,15 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             Intent intent = new Intent(v.getContext(), RecipeDetailActivity.class);
             // Pass the drink object as JSON to the detail activity
             intent.putExtra("drink_json", new Gson().toJson(drink));
+            
+            // Pass the rating if it exists
+            if (drink.strDrink != null) {
+                String searchKey = drink.strDrink.toLowerCase().trim();
+                if (ratingsMap.containsKey(searchKey)) {
+                    intent.putExtra("drink_rating", ratingsMap.get(searchKey));
+                }
+            }
+            
             v.getContext().startActivity(intent);
         });
     }
@@ -61,12 +86,14 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         ImageView image;
         TextView title;
         TextView category;
+        TextView rating; // newly added
 
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.recipeImage);
             title = itemView.findViewById(R.id.recipeTitle);
             category = itemView.findViewById(R.id.recipeCategory);
+            rating = itemView.findViewById(R.id.recipeRating);
         }
     }
 }

@@ -38,6 +38,13 @@ public class RecipeDetailActivity extends AppCompatActivity {
         title.setText(drink.strDrink);
         category.setText(drink.strCategory + " | " + drink.strAlcoholic);
         instructions.setText(drink.strInstructions);
+        
+        int ratingScore = getIntent().getIntExtra("drink_rating", -1);
+        if (ratingScore != -1) {
+            TextView rating = findViewById(R.id.detailRating);
+            rating.setText("⭐ " + ratingScore + " / 5");
+            rating.setVisibility(android.view.View.VISIBLE);
+        }
 
         Glide.with(this).load(drink.strDrinkThumb).into(image);
 

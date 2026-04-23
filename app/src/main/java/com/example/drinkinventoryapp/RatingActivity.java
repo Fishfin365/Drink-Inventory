@@ -208,7 +208,7 @@ public class RatingActivity extends AppCompatActivity {
 
 
     private void loadData() {
-        db.collection("ratings").whereEqualTo("userId", userId).get().addOnCompleteListener(task -> {
+        db.collection("ratings").get().addOnCompleteListener(task -> {
             if (task.isSuccessful() && task.getResult() != null) {
                 allItems.clear();
                 for (QueryDocumentSnapshot document : task.getResult()) {
