@@ -66,6 +66,16 @@
                 android:textSize="16sp"
                 android:text="Category | Alcoholic" />
 
+            <TextView
+                android:id="@+id/detailRating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/amber"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

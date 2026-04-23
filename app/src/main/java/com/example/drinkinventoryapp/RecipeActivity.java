@@ -85,6 +85,26 @@ public class RecipeActivity extends AppCompatActivity {
         
         loadUserInventory();
         loadInitialRecipes();
+        loadUserRatings();
+    }
+
+    private void loadUserRatings() {
+        String userId = FirebaseAuth.getInstance().getUid();
+        if (userId == null) return;
+
+        FirebaseFirestore.getInstance().collection("ratings")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    java.util.Map<String, Integer> ratingsMap = new java.util.HashMap<>();
+                    for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                        String name = doc.getString("name");
+                        Long ratingValue = doc.getLong("rating");
+                        if (name != null && ratingValue != null) {
+                            ratingsMap.put(name.toLowerCase().trim(), ratingValue.intValue());
+                        }
+                    }
+                    adapter.setRatingsMap(ratingsMap);
+                });
     }
 
     private void loadUserInventory() {
